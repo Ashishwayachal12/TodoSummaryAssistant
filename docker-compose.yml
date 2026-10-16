@@ -4,8 +4,8 @@ services:
     environment:
       MYSQL_DATABASE: todo_db
       MYSQL_USER: ${MYSQL_USER:-todoapp}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-ashishwayachal}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-ashishwayachal}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -17,13 +17,14 @@ services:
     restart: unless-stopped
 
   backend:
-    image: ${BACKEND_IMAGE}:${IMAGE_TAG}
+    build:
+      context: ./Backend/todo-summary-assistant
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo_db?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-todoapp}
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
-      COHERE_API_KEY: ${COHERE_API_KEY:?Set COHERE_API_KEY in .env}
-      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:?Set SLACK_WEBHOOK_URL in .env}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-ashishwayachal}
+      COHERE_API_KEY: ${COHERE_API_KEY:-R0o9PbymSOBiscSr9L7YktWfVjl9Id2DDcm2LaxJ}
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:-https://hooks.slack.com/services/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}
       APP_CORS_ALLOWED_ORIGIN: ${APP_CORS_ALLOWED_ORIGIN:-http://16.170.7.63:3000}
     depends_on:
       mysql:
@@ -33,7 +34,10 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: ${FRONTEND_IMAGE}:${IMAGE_TAG}
+    build:
+      context: ./Frontend/todo
+      args:
+        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-http://16.170.7.63:8080/api/todos}
     depends_on:
       - backend
     ports:
