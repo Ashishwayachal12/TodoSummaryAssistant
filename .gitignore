@@ -22,17 +22,23 @@ yarn-debug.log*
 yarn-error.log*
 
 # Terraform
-**/.terraform/*
+**/.terraform/
 *.tfstate
 *.tfstate.*
+*.tfstate.lock.info
 *.tfvars
 *.tfvars.json
+*.tfplan
+*.plan
 crash.log
 crash.*.log
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+terraform.rc
+.terraformrc
+# Keep .terraform.lock.hcl tracked to pin provider versions.
 
 # Operating system files
 .DS_Store

@@ -121,6 +121,8 @@ A full-stack application to manage personal to-do items, summarize pending tasks
 
 | File | Purpose |
 | --- | --- |
+| `docker-compose.yml` | Runs the MySQL database, backend, and frontend together. |
+| `.env.example` | Template for local Docker Compose settings and secrets; copy to `.env` and replace the placeholders. |
 | `Backend/todo-summary-assistant/Dockerfile` | Builds and runs the Spring Boot backend container. |
 | `Backend/todo-summary-assistant/src/main/resources/application.properties` | Backend database, server, and integration configuration. Keep real credentials out of source control. |
 | `Backend/todo-summary-assistant/src/main/java/com/todoapp/controller/TodoController.java` | REST API endpoints for todo operations. |
@@ -132,6 +134,19 @@ A full-stack application to manage personal to-do items, summarize pending tasks
 | `terraform/ec2.tf` | EC2 instance, SSH key pair, and security-group ingress rules. |
 | `terraform/terraform.tf` | Terraform AWS provider configuration. |
 | `terraform/variables.tf` | AWS region, AMI, and EC2 instance type inputs. |
+
+## Run the Full Stack with Docker Compose
+
+1. Copy `.env.example` to `.env` in the project root and replace the placeholder values with your database passwords, Cohere API key, and Slack webhook URL. For remote access, set `REACT_APP_API_BASE_URL` to the backend URL reachable by browsers and `APP_CORS_ALLOWED_ORIGIN` to the frontend's origin.
+2. Start the services from the project root:
+
+   ```bash
+   docker compose up --build -d
+   ```
+
+3. Open the frontend at `http://localhost:3000`. The backend API is available at `http://localhost:8080`.
+
+MySQL is available only to services on the Compose network. To stop the services, run `docker compose down`. To also remove the persistent database volume, run `docker compose down -v`.
 
 ## Demo Images
 
