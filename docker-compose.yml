@@ -18,7 +18,7 @@ services:
 
   backend:
     build:
-       image: ${BACKEND_IMAGE}:${IMAGE_TAG}
+    image: ${BACKEND_IMAGE}:${IMAGE_TAG}
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo_db?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-todoapp}
