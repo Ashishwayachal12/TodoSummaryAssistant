@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class SlackService {
 
-    @Value("${slack.webhook.url}")
+    @Value("${https://hooks.slack.com/services/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}")
     private String slackWebhookUrl;
 
     private final OkHttpClient httpClient;
