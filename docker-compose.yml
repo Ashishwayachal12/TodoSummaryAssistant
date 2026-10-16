@@ -17,7 +17,6 @@ services:
     restart: unless-stopped
 
   backend:
-    build:
     image: ${BACKEND_IMAGE}:${IMAGE_TAG}
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo_db?createDatabaseIfNotExist=true
@@ -34,10 +33,9 @@ services:
     restart: unless-stopped
 
   frontend:
-    build:
     image: ${FRONTEND_IMAGE}:${IMAGE_TAG}
-      # args:
-      #   REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-http://16.170.7.63:8080/api/todos}
+    # args:
+    #   REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-http://16.170.7.63:8080/api/todos}
     depends_on:
       - backend
     ports:
