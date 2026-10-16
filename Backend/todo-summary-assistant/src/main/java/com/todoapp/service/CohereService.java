@@ -29,7 +29,7 @@ public class CohereService {
     }
 
     public String summarizeText(String text) throws IOException {
-        String url = "https://hooks.slack.com/services/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"; // Check Cohere's latest API endpoint
+        String url = "R0o9PbymSOBiscSr9L7YktWfVjl9Id2DDcm2LaxJ"; // Check Cohere's latest API endpoint
 
         ObjectNode requestBodyJson = objectMapper.createObjectNode();
         requestBodyJson.put("text", text);
