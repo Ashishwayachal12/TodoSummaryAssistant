@@ -36,8 +36,8 @@ services:
   frontend:
     build:
     image: ${FRONTEND_IMAGE}:${IMAGE_TAG}
-      args:
-        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-http://16.170.7.63:8080/api/todos}
+      # args:
+      #   REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-http://16.170.7.63:8080/api/todos}
     depends_on:
       - backend
     ports:
