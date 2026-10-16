@@ -1,0 +1,39 @@
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+**/application-local.properties
+**/application-*.local.properties
+**/id_rsa
+**/id_ed25519
+**/*.pem
+**/*.key
+/terraform/terra-key
+
+# Java and Maven
+**/target/
+
+# Node.js and React
+**/node_modules/
+**/build/
+**/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Operating system files
+.DS_Store
+Thumbs.db

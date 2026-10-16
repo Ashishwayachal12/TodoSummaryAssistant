@@ -117,6 +117,22 @@ A full-stack application to manage personal to-do items, summarize pending tasks
 * **LLM Prompt Engineering:** A simple prompt is used for Cohere to instruct it on summarizing the list of to-do items. This can be further refined for better results.
 * **Notification System:** A simple notification component in React provides immediate feedback to the user about operations.
 
+## Important Files
+
+| File | Purpose |
+| --- | --- |
+| `Backend/todo-summary-assistant/Dockerfile` | Builds and runs the Spring Boot backend container. |
+| `Backend/todo-summary-assistant/src/main/resources/application.properties` | Backend database, server, and integration configuration. Keep real credentials out of source control. |
+| `Backend/todo-summary-assistant/src/main/java/com/todoapp/controller/TodoController.java` | REST API endpoints for todo operations. |
+| `Backend/todo-summary-assistant/src/main/java/com/todoapp/service/TodoService.java` | Todo business logic. |
+| `Backend/todo-summary-assistant/src/main/java/com/todoapp/service/CohereService.java` | Cohere summarization integration. |
+| `Backend/todo-summary-assistant/src/main/java/com/todoapp/service/SlackService.java` | Slack notification integration. |
+| `Frontend/todo/Dockerfile` | Builds the React frontend and serves it with Nginx. |
+| `Frontend/todo/src/services/todoService.js` | Frontend API client and backend URL configuration. |
+| `terraform/ec2.tf` | EC2 instance, SSH key pair, and security-group ingress rules. |
+| `terraform/terraform.tf` | Terraform AWS provider configuration. |
+| `terraform/variables.tf` | AWS region, AMI, and EC2 instance type inputs. |
+
 ## Demo Images
 
 ![Screenshot (1146)](https://github.com/user-attachments/assets/53fe53e3-b527-4659-9ab6-b462ae034fbd)

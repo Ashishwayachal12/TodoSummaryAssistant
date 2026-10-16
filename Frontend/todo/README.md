@@ -2,6 +2,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Run with Docker
+
+Build and run the production frontend image from this directory:
+
+```bash
+docker build -t todo-summary-assistant-frontend .
+docker run --rm -p 3000:80 todo-summary-assistant-frontend
+```
+
+Open `http://localhost:3000`. The frontend uses `http://localhost:8080/api/todos`
+as its default backend URL. To build it with a different API URL, pass
+`REACT_APP_API_BASE_URL` as a build argument:
+
+```bash
+docker build --build-arg REACT_APP_API_BASE_URL=https://api.example.com/api/todos -t todo-summary-assistant-frontend .
+```
+
+This URL is embedded into the frontend at build time and must be reachable by
+the user's browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
