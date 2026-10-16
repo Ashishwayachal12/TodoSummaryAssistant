@@ -5,8 +5,8 @@ services:
     environment:
       MYSQL_DATABASE: todo_db
       MYSQL_USER: ${MYSQL_USER:-todoapp}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-Ashishwayachal}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Ashishwayachal}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
